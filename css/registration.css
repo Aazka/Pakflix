@@ -1,0 +1,168 @@
+body{
+    margin:0;
+    padding:0;
+    font-family: sans-serif;
+    /*  background:url(bg.png);
+      background-attachment: fixed;
+      background-position: center;*/
+}
+h3
+{
+    margin-right: 200px;
+    font-size: 25px;
+    height: 20px;
+    margin-top: -50px;
+}
+a{
+    margin: auto;
+    text-align: center;
+    font-size: 15px;
+}
+p{
+    margin-top: 8px;
+    font-size: 14px;
+}
+/*body{
+    margin:0;
+    padding:0;
+    font-family: "Century Gothic";
+}*/
+i{
+    color: #000;
+}
+.panel-body{
+    margin:auto;
+    width:60%;
+    font-size: 35px;
+    padding: 20px;
+    margin-top: 150px;
+}
+.Input{
+    font-size: 15px;
+    margin-top: -15px;
+    margin-left: -10px;
+}
+
+fieldset
+{
+    padding: 20px;
+    width: 65%;
+    height: 370px;
+    margin-top: -10px ;
+}
+header
+{
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 0 100Px;
+    background: #1BBD36;
+    width: 100%;
+    box-sizing: border-box;
+}
+header.logo
+{
+    color:#fff;
+    margin-top: 25px;
+    font-size: 30px;
+    float:left;
+    font-weight:bold;
+}
+header nav
+{
+    float:right;
+
+}
+header nav ul {
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+header nav ul li {
+    list-style: none;
+}
+header nav ul li a {
+    height: 50px;
+    line-height: 50px;
+    font-size: 20px;
+    padding: 0 20px;
+    color: #fff;
+    text-decoration: none;
+    display:block;
+}
+header nav ul li a:hover,header nav ul li a:active
+{
+    color:#fff;
+    background:#2196f3;
+
+}
+.menu-toggle
+{
+    color:#fff;
+    float:right;
+    line-height:50px;
+    font-size:24px;
+    cursor:pointer;
+    display:none;
+}
+@media (max-width:991px)
+{
+    .panel-body
+    {
+    }
+    header
+    {
+        padding:0 20px;
+    }
+    .menu-toggle
+    {
+        display:block;
+    }
+    header nav
+    {
+        position:absolute;
+        width:100%;
+        height: calc(100vh-50px);
+        background:#333;
+        top:50px;
+        left:-100%;
+        transition:0.5s;
+    }
+    header nav.active {
+        left: 0;
+    }
+
+    header nav ul{
+        display:block;
+        text-align:center;
+    }
+    header nav ul{
+        display:block;
+        text-align:center;
+    }
+    header nav ul li a
+    {
+        border-bottom:1px solid rgba(0,0,0,.2);
+    }
+}
+.registerbtn{
+    width: 20%;
+    height: 25px;
+}
+footer
+{
+    height: 50px;
+    margin-bottom: -30px;
+    position: absolute;
+    width:100%;
+    background:#1BBD36;
+    bottom: 0;
+    text-align: center;
+}
+Pakflix
+{
+    margin:0px;
+    padding:0px;
+    line-height: 60px;
+    color:#fff;
+}
