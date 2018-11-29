@@ -1,0 +1,159 @@
+html, body
+{
+    padding:0;
+    margin:0;
+    height:100%;
+    width:100%;
+}
+#wrapper
+{
+    min-height: 100%;
+    position:relative;
+}
+#footer
+{
+    bottom:0;
+    width:100%;
+    height:190px;
+    position:absolute;
+}
+#main-content
+{
+    padding-bottom: 190px;
+}
+*{
+    margin:0;
+    padding:0;
+
+}
+a:hover
+{
+    background-position: right;
+}
+
+.navbar-text{
+
+    text-align: -webkit-center;
+}
+.navbar-text a:hover{
+    background: #491217;
+    text-decoration: none;
+}
+.navbar-dark .navbar-nav li a
+{
+    color:saddlebrown;
+}
+.navbar-dark .navbar-nav li a:hover {
+    background: #491217;
+}
+.navbar-dark .navbar-nav li a:hover, .navbar-dark .navbar-nav li a:active
+{
+    color:brown;
+}
+.navbar-dark .navbar-nav li a:hover, .navbar-dark .navbar-nav li a select
+{
+    color: brown;
+}
+
+*{
+    color:darkred;
+}
+
+.form-container
+{
+    border:0px solid #333;
+    padding:20px 20px;
+    margin-top:20vh;
+    margin-bottom: 20vh;
+    box-shadow:-1px 4px 26px 11px rgba(0,0,0,0.75);
+    background: orange;
+}
+
+.footer{
+    clear:both;
+    width:100%;
+    min-height:300px;
+    background-image: linear-gradient(rgba(255,165,0,0.35),orange);
+
+}
+.footer .widget-footer{
+    width: 100%;
+    min-height:240px;
+
+
+}
+.footer .widgets
+{
+    width:20%;
+    min-height:220px;
+    padding:3.5%;
+    float:left;
+}
+.footer .widgets h4
+{
+    color:darkslategray;
+    border-bottom: 1px solid rgba(0 128,0,0.23);
+    font-size: 13px;
+}
+.footer .widgets p
+{
+    color:rgb(142,142,142);
+    font-size: small;
+    margin: 8px 0px;
+}
+.footer .subscribe-text
+{
+    width:100%;
+    border:1px solid rgba(0,128,0,0.23);
+    border-radius:100px;
+    height:25px;
+}
+.footer .subscribe-btn {
+    border: 1px solid #d8ffe2;
+    background-image: linear-gradient(#4db345, #aef382);
+    color: #338c08;
+    font-size: 13px;
+    padding: 3px 10px;
+    border-radius: 100px;
+    margin-top: 10px;
+}
+.subscribe-btn:hover
+{
+    cursor: pointer;
+    background-image: linear-gradient(#3bad33,#baefab);
+}
+.footer .widgets img
+{
+
+    margin: 15px;
+}
+.footer .main-footer
+{
+    clear:both;
+    width:100%;
+    height:60px;
+    background:rgba(0,0,0,0.5);
+}
+.footer .main-footer p{
+    color:#fff;
+    text-align:center;
+    padding-top: 22px;
+}
+@media screen and (max-width: 768px)
+{
+    .footer .widgets
+    {
+        width:100%;
+        max-height: auto;
+        padding:2.5% 0px;
+        float:none;
+    }
+    .footer .subscribe-text
+    {
+        width:100%;
+    }
+    .footer .main-footer p
+    {
+        font-size: 13px;
+    }
+}
