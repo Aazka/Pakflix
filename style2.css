@@ -55,18 +55,16 @@ a:hover
     color: brown;
 }
 
-*{
-    color:darkred;
+form{
+    background: #fff;
 }
-
 .form-container
 {
-    border:0px solid #333;
-    padding:20px 20px;
-    margin-top:20vh;
+    border-radius: 10px;
+    padding:30px;
+    box-shadow: 0px 0px 10px 0px;
+    margin-top:25vh;
     margin-bottom: 20vh;
-    box-shadow:-1px 4px 26px 11px rgba(0,0,0,0.75);
-    background: orange;
 }
 
 .footer{
