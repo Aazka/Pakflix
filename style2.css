@@ -20,6 +20,7 @@ html, body
 #main-content
 {
     padding-bottom: 190px;
+
 }
 *{
     margin:0;
@@ -55,17 +56,32 @@ a:hover
     color: brown;
 }
 
-form{
+/*form{
     background: #fff;
-}
+}*/
 .form-container
 {
+    background: #fff;
+
     border-radius: 10px;
     padding:30px;
-    box-shadow: 0px 0px 10px 0px;
-    margin-top:25vh;
-    margin-bottom: 20vh;
+    box-shadow: 0px 0px 10px 0px #000;
+    margin-top:35vh;
+    margin-bottom: 40vh;
 }
+
+/*
+.form-container
+{
+    position:absolute;
+    top:20vh;
+    margin-bottom: 40vh;
+    background: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px 0px #000;
+}
+*/
 
 .footer{
     clear:both;
