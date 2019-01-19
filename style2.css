@@ -4,8 +4,6 @@ html, body
     margin:0;
     height:100%;
     width:100%;
-
-    background-image: url("image/login.jpg");;
 }
 #wrapper
 {
@@ -19,10 +17,7 @@ html, body
     height:190px;
     position:absolute;
 }
-#footer .widgets.li
-{
-    color: #007bff;
-}
+
 #main-content
 {
     padding-bottom: 190px;
@@ -111,13 +106,13 @@ a:hover
 }
 .footer .widgets h4
 {
-    color: #dee2e6;
+    color: black;
     border-bottom: 1px solid rgba(0 128,0,0.23);
     font-size: 13px;
 }
 .footer .widgets p
 {
-    color:#dee2e6;
+    color:darkgray;
     font-size: small;
     margin: 8px 0px;
 }
