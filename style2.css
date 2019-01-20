@@ -154,6 +154,8 @@ a:hover
     text-align:center;
     padding-top: 22px;
 }
+
+
 @media screen and (max-width: 768px)
 {
     .footer .widgets
