@@ -233,7 +233,7 @@ if(isset($_POST['insert_Movie']))
                     <div class="input-group-prepend">
                         <div class="input-group-text"><i class="far fa-comment-alt"></i></div>
                     </div>
-                    <input class="form-control" type="text" id="w_name" name="w_name" placeholder="Enter Writer Name" required pattern="^([A-Z]{1}?|[a-z]+(\s|-|_|\.)?)+$">
+                    <input class="form-control" type="text" id="w_name" name="w_name" placeholder="Enter Writer Name" required pattern="^(([A-Z]{1}?|[a-z]+(\s|-|_|\.)?)+,?)+$">
                 </div>
             </div>
         </div>
