@@ -1,4 +1,17 @@
-<?php require "Header.php" ?>
+<?php require "Header.php";
+if(isset($_POST['ForgetPass']))
+{
+$email=$_POST['exampleInputEmail1'];
+$password=$_POST['exampleInputPassword1'];
+$password2=$_POST['exampleInputPassword1'];
+$reg_email='/[a-z\d.-_]{3,15}([a-z\d.-_]{0,10})?(@)[a-z]{5,10}(\.)[a-z]{3}/';
+$reg_pass='(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}';
+if(!(preg_match($reg_email, $email) AND preg_match($reg_pass, $password)AND preg_match($reg_pass, $password2)))
+{
+echo "plz follow the format";
+}
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -16,22 +29,6 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="css/style.css">
 
-
-    <!--<style>
-        body{
-         /*background:black;*/
-            /*background-image: url("image/login.jpg");*/
-        }
-        .footer .widgets h4
-        {
-            color: #dee2e6;
-
-        }
-        .footer .widgets p
-        {
-            color:#dee2e6;
-        }
-    </style>-->
 </head>
 <body>
 <div id="wrapper">
@@ -54,7 +51,7 @@
                             <label for="exampleInputPassword1">Confirmed Password</label>
                             <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Confirmed Password" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}">
                         </div>
-                        <button type="submit" class="btn btn-success btn-block">Submit</button>
+                        <button type="submit" name="ForgetPass" class="btn btn-success btn-block">Submit</button>
                     </form>
                     </section>
                     </section>
