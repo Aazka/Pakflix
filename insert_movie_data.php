@@ -59,6 +59,7 @@ if(isset($_POST['insert_Movie']))
     move_uploaded_file($image_tmp,"image/$image");
     $insertQuery = "insert into movies_data(Title,Rating,Release_Date,Director,Writer,Genre,Screening_Type,Running_Time,Image) values('$title','$r','$rd','$dir','$wri','$g','$s','$d','$image')";
     $result = mysqli_query($con , $insertQuery);
+    //echo
     //echo $insertQuery;
     if (!$result)
     {

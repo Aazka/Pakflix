@@ -41,7 +41,7 @@ if(isset($_POST['update'])) {
 //  if(!preg_match($regex_running_time,$d))
 // {
 // echo"<script>alert('hello $d')</script>";
-
+//echo
 //}
     if (preg_match($regex_title, $titles) AND preg_match($regex_rating, $rs)
         AND preg_match($regex_director, $dirs)
