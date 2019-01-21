@@ -48,7 +48,6 @@ if(isset($_POST['insert_Movie']))
     //  if(!preg_match($regex_running_time,$d))
     // {
     // echo"<script>alert('hello $d')</script>";
-
     //}
     if (preg_match($regex_title, $title) AND preg_match($regex_rating, $r)
     AND preg_match($regex_director, $dir)

@@ -1,6 +1,6 @@
 <?php
 require 'database/db_connection.php';
-if(isset($_POST['update'])) {
+if(isset($_POST['update'])) { // && isset($_POST['delete'])
     $titles = $_POST['m_title'];
     $genre = NULL;
     if (!empty($_POST['genre'])) {
@@ -14,7 +14,7 @@ if(isset($_POST['update'])) {
     }
 
     $rds = $_POST['date'];
-    $ds = $_POST['duration'];
+    $d = $_POST['duration'];
     $dirs = $_POST['d_name'];
     $wris = $_POST['w_name'];
     $screen_type = NULL;
@@ -72,17 +72,17 @@ if(isset($_POST['update'])) {
                       where id = '$_POST[MID]'";
             mysqli_query($con, $insrt);
         }
-
-        if (isset($_POST['delete'])) {
-            $delete = "delete from movies_data where id = '$_POST[MID]'";
-            mysqli_query($con, $delete);
-        }
     }
     else
     {
         echo "no valid data";
     }
 }
+if (isset($_POST['delete'])) {
+    $delete = "delete from movies_data where id = '$_POST[MID]'";
+    mysqli_query($con, $delete);
+}
+//done
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -178,7 +178,7 @@ if(isset($_POST['update'])) {
                          <input type='checkbox' name='st[]' value='3d'>3D</input>     
                     </th>
                     <th>
-                         <input class='form-control' type='text' id='duration' name='duration' placeholder='Enter Running Time' value='$d' required pattern=\"^[1-9]+(0{1,2})?\s(minutes|m|mint)$\">
+                         <input class='form-control' type='text' id='duration' name='duration' placeholder='Enter Running Time' value='$d' ><!--required pattern=\"^[1-9]+(0{1,2})?\s(minutes|m|mint)$\"-->
                     </th>
                     <th>
                       <span> 
