@@ -1,76 +1,89 @@
 <?php
 require 'db_connection.php';
-if(isset($_POST['update']))
-{
+if(isset($_POST['update'])) { // && isset($_POST['delete'])
     $titles = $_POST['m_title'];
-    $genre  = NULL;
-    if(!empty($_POST['genre']))
-    {
-        foreach($_POST['genre'] as $value)
-        {
-            if($genre!=NULL)
-            {
-                $genre=$genre.','.$value;
-            }
-            else{
-                $genre=$genre.$value;
+    $genre = NULL;
+    if (!empty($_POST['genre'])) {
+        foreach ($_POST['genre'] as $value) {
+            if ($genre != NULL) {
+                $genre = $genre . ',' . $value;
+            } else {
+                $genre = $genre . $value;
             }
         }
     }
 
-    $rds =$_POST['date'];
-    $ds =$_POST['duration'];
-    $dirs =$_POST['d_name'];
-    $wris =$_POST['w_name'];
+    $rds = $_POST['date'];
+    $d = $_POST['duration'];
+    $dirs = $_POST['d_name'];
+    $wris = $_POST['w_name'];
     $screen_type = NULL;
 
-    if(!empty($_POST['st']))
-    {
-        foreach($_POST['st'] as $value)
-        {
-            if($screen_type !=NULL)
-            {
-                $screen_type =$screen_type .','.$value;
-            }
-            else{
-                $screen_type =$screen_type .$value;
+
+    if (!empty($_POST['st'])) {
+        foreach ($_POST['st'] as $value) {
+            if ($screen_type != NULL) {
+                $screen_type = $screen_type . ',' . $value;
+            } else {
+                $screen_type = $screen_type . $value;
             }
         }
     }
-    $rs =$_POST['rating'];
+    $rs = $_POST['rating'];
     $images = $_FILES['pro_image']['name'];
-    $image_tmp = $_FILES['pro_image']['tmp_name'];
-    move_uploaded_file($image_tmp,"Images/$images");
+    $rs = $_POST['rating'];
+    $images = $_FILES['pro_image']['name'];
+    $regex_title = '/([a-zA-Z0-9]+\s?)+/';
+    $regex_rating = '/[1-9]0?\.[0-9]/';
+    $regex_director = '/([A-Z]{1}?|[a-z]+(\s|-|_|\.)?)+/';
+    $regex_writer = '/(([A-Z]{1}?|[a-z]+(\s|-|_|\.)?)+,?)+/';
+    $regex_running_time = '/[1-9]+(0{1,2})?\s(minutes|m|mint|min)/';//125 m, 125.365!,120 min
+    $regex_image = '/.+(png|jpg|jpeg)/';
+//  if(!preg_match($regex_running_time,$d))
+// {
+// echo"<script>alert('hello $d')</script>";
+//echo
+//}
+    if (preg_match($regex_title, $titles) AND preg_match($regex_rating, $rs)
+        AND preg_match($regex_director, $dirs)
+        AND preg_match($regex_writer, $wris)
+        AND preg_match($regex_running_time, $d)
+        AND preg_match($regex_image, $images)) {
+        $image_tmp = $_FILES['pro_image']['tmp_name'];
+        move_uploaded_file($image_tmp, "image/$images");
 
-    $insert = "update movies_data set Title='$titles', Rating='$rs',Release_Date='$rds',Director='$dirs',
+        $insert = "update movies_data set Title='$titles', Rating='$rs',Release_Date='$rds',Director='$dirs',
                         Writer='$wris',
                         Running_Time='$ds'
                         where id = '$_POST[MID]' ";
-    $inserts = mysqli_query($con, $insert);
+        $inserts = mysqli_query($con, $insert);
 
-    if($images!=NULL)
-    {
-        $inserss = "update movies_data set Image = '$images'
+        if ($images != NULL) {
+            $inserss = "update movies_data set Image = '$images'
                       where id = '$_POST[MID]'";
-        mysqli_query($con, $inserss);
+            mysqli_query($con, $inserss);
+        }
+        if ($genre != NULL) {
+            $insertsss = "update movies_data set Genre = '$genre'
+                      where id = '$_POST[MID]'";
+            mysqli_query($con, $insertsss);
+        }
+        if ($screen_type != NULL) {
+            $insrt = "update movies_data set Screening_Type = '$screen_type'
+                      where id = '$_POST[MID]'";
+            mysqli_query($con, $insrt);
+        }
     }
-    if($genre!=NULL)
+    else
     {
-        $insertsss = "update movies_data set Genre = '$genre'
-                      where id = '$_POST[MID]'";
-        mysqli_query($con, $insertsss);
-    }
-    if($screen_type!=NULL)
-    {
-        $insrt = "update movies_data set Screening_Type = '$screen_type'
-                      where id = '$_POST[MID]'";
-        mysqli_query($con, $insrt);
+        echo "no valid data";
     }
 }
-if(isset($_POST['delete'])) {
+if (isset($_POST['delete'])) {
     $delete = "delete from movies_data where id = '$_POST[MID]'";
-    mysqli_query($con,$delete);
+    mysqli_query($con, $delete);
 }
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -112,7 +125,7 @@ if(isset($_POST['delete'])) {
         <th align="left" valign="middle" >Delete</th>
     </tr>
     <?php
-    require "db_connection.php";
+    require "database/db_connection.php";
     global $con;
     $get = "select * from movies_data";
     $getResult = mysqli_query($con,$get);
@@ -133,7 +146,7 @@ if(isset($_POST['delete'])) {
                   <form action='deleteupdate.php' method = 'post' enctype='multipart/form-data'>
                    <input type='hidden' class='form-control' id='MID' name='MID' value='$MID'>
                   <th>
-                      <input type='text' class='form-control' id='m_title' name='m_title' placeholder='Enter Movie Title' value='$title'>
+                      <input type='text' class='form-control' id='m_title' name='m_title' placeholder='Enter Movie Title' value='$title' required pattern=\"^([a-zA-Z0-9]+\s?)+$\">
                    </th>
                    
                    <th>
@@ -145,11 +158,11 @@ if(isset($_POST['delete'])) {
                     </th>
                     
                     <th>
-                       <input class='form-control' type='text' id='d_name' name='d_name' placeholder='Enter Director Name' value='$dir'>
+                       <input class='form-control' type='text' id='d_name' name='d_name' placeholder='Enter Director Name' value='$dir' required pattern=\"^([A-Z]{1}?|[a-z]+(\s|-|_|\.)?)+$\">
                     </th> 
                    
                     <th>
-                       <input class='form-control' type='text' id='w_name' name='w_name' placeholder='Enter Writer Name' value='$wri'>
+                       <input class='form-control' type='text' id='w_name' name='w_name' placeholder='Enter Writer Name' value='$wri'  required pattern=\"^(([A-Z]{1}?|[a-z]+(\s|-|_|\.)?)+,?)+$\">
                     </th> 
                     <th>
                        || $g||
@@ -166,12 +179,12 @@ if(isset($_POST['delete'])) {
                          <input type='checkbox' name='st[]' value='3d'>3D</input>     
                     </th>
                     <th>
-                         <input class='form-control' type='text' id='duration' name='duration' placeholder='Enter Running Time' value='$d'>
+                         <input class='form-control' type='text' id='duration' name='duration' placeholder='Enter Running Time' value='$d' ><!--required pattern=\"^[1-9]+(0{1,2})?\s(minutes|m|mint)$\"-->
                     </th>
                     <th>
                       <span> 
                        <img src= 'images/$image' class='w-50 h-50'>
-                       <input class=form-control type=file id=pro_image name=pro_image>
+                       <input class='form-control' type='file' id='pro_image' name='pro_image' required pattern=\"^.+(png|jpg|jpeg)$\">
                        </span>
                     </th>
                     <th>
