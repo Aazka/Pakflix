@@ -19,6 +19,7 @@ if(isset($_POST['update'])) { // && isset($_POST['delete'])
     $wris = $_POST['w_name'];
     $screen_type = NULL;
 
+
     if (!empty($_POST['st'])) {
         foreach ($_POST['st'] as $value) {
             if ($screen_type != NULL) {
