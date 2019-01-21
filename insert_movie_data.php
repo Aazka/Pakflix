@@ -1,26 +1,7 @@
 <?php
 require "database/db_connection.php";
-/*$mov_title='';
-$rating='';
-$releaseDate='';
-$dir_name='';
-$writer_name='';
-$running_time='';*/
 if(isset($_POST['insert_Movie']))
 {
-    /*for server side validation*/
-
-  /*  if(empty($_POST[m_title]))
-    {
-        $mov_title="<p>please enter movie name</p>";
-    }
-    else
-    {
-        if(!preg_match("/^[a-zA-Z0-9]+\s?)+$/",$_POST['m_title']))
-        {
-            $mov_title="<p>enter valid movie name</p>";
-        }
-    }*/
     /*this is for insertion*/
     $title = $_POST['m_title'];
     $g  = NULL;
@@ -58,14 +39,34 @@ if(isset($_POST['insert_Movie']))
     }
     $r =$_POST['rating'];
     $image = $_FILES['pro_image']['name'];
+    $regex_title = '/([a-zA-Z0-9]+\s?)+/';
+    $regex_rating = '/[1-9]0?\.[0-9]/';
+    $regex_director = '/([A-Z]{1}?|[a-z]+(\s|-|_|\.)?)+/';
+    $regex_writer = '/(([A-Z]{1}?|[a-z]+(\s|-|_|\.)?)+,?)+/';
+    $regex_running_time = '/[1-9]+(0{1,2})?\s(minutes|m|mint|min)/';//125 m, 125.365!,120 min
+    $regex_image = '/.+(png|jpg|jpeg)/';
+    //  if(!preg_match($regex_running_time,$d))
+    // {
+    // echo"<script>alert('hello $d')</script>";
+
+    //}
+    if (preg_match($regex_title, $title) AND preg_match($regex_rating, $r)
+    AND preg_match($regex_director, $dir)
+    AND preg_match($regex_writer, $wri)
+    AND preg_match($regex_running_time, $d)
+    AND preg_match($regex_image, $image)) {
     $image_tmp = $_FILES['pro_image']['tmp_name'];
-    move_uploaded_file($image_tmp,"Images/$image");
+    move_uploaded_file($image_tmp,"image/$image");
     $insertQuery = "insert into movies_data(Title,Rating,Release_Date,Director,Writer,Genre,Screening_Type,Running_Time,Image) values('$title','$r','$rd','$dir','$wri','$g','$s','$d','$image')";
     $result = mysqli_query($con , $insertQuery);
     //echo $insertQuery;
     if (!$result)
     {
         echo "not executed";
+    }
+    }
+    else{
+        echo "server side validation invalid";
     }
 }
 ?>
@@ -102,7 +103,7 @@ if(isset($_POST['insert_Movie']))
 <body>
 <div class="container">
     <h1 class="text-center my-4"><i class="fas fa-plus fa-md"></i> <span class="d-none d-sm-inline"> Add New </span> Movie </h1>
-    <form action="insert_movies_data.php" method="post" enctype="multipart/form-data">
+    <form action="insert_movie_data.php" method="post" enctype="multipart/form-data">
         <div class="row">
             <div class="d-none d-sm-block col-sm-3 col-md-4 col-lg-2 col-xl-2 mt-auto">
                 <label for="pro_title" class="float-md-right"> <span class="d-sm-none d-md-inline"> Movie</span> Title:</label>
@@ -112,7 +113,7 @@ if(isset($_POST['insert_Movie']))
                     <div class="input-group-prepend">
                         <div class="input-group-text"><i class="fas fa-file-signature"></i></div>
                     </div>
-                    <input type="text" name="movie_title" class="form-control" id="m_title" name="m_title" placeholder="Enter Movie Title" required pattern="^([a-zA-Z0-9]+\s?)+$">
+                    <input type="text" class="form-control" id="m_title" name="m_title" placeholder="Enter Movie Title" required pattern="^([a-zA-Z0-9]+\s?)+$">
                    <!-- <div>< /*echo $mov_title */</div>-->
                 </div>
             </div>
