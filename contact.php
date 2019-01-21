@@ -1,4 +1,4 @@
-
+<?php require "Header.php"?>
 <!DOCTYPE html>
 <html lang="en" xmlns:margin-left="http://www.w3.org/1999/xhtml">
 <meta name="viewport" content="width=device-width initial-scale=1.0">
@@ -9,9 +9,9 @@
 
 <head>
     <title>PAKFLIX</title>
-    <link rel="stylesheet" href="bootstrap.css">
+    <link rel="stylesheet" href="css/bootstrap.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="style1.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">
@@ -59,127 +59,19 @@
             margin-left:35%;
         }
 
-        html {
-            font-family:"Lucida Sans",sans-serif;
-        }
-        header
-        {
-            position:absolute;
-            top:0;
-            left:0;
-            height: 100px;
-            padding:0 100Px;
-            background: #1BBD36;
-            width:100%;
-            box-sizing: border-box;
-        }
-        header.logo
-        {
-            color:#fff;
-            margin-top: 25px;
-            float:left;
-            font-weight:bold;
-        }
-        header nav
-        {
-            float:right;
-        }
-        header nav ul {
-            margin: 0;
-            padding: 0;
-            display: flex;
-        }
-        header nav ul li {
-            list-style: none;
-        }
-        header nav ul li a {
-            height: 50px;
-            margin-top: 50px;
-            line-height: 60px;
-            padding: 0 20px;
-            color: #fff;
-            text-decoration: none;
-            display:block;
-        }
-        header nav ul li a:hover,header nav ul li a:active
-        {
-            color:#fff;
-            background:#2196f3;
-        }
-        .menu-toggle
-        {
-            color:#fff;
-            float:right;
-            line-height:20px;
-            font-size:24px;
-            cursor:pointer;
-            display:none;
-        }
-        @media (max-width:891px)
-        {
-            header
-            {
-                padding:0 20px;
-            }
-            .menu-toggle
-            {
-                display:block;
-            }
-            header nav
-            {
-                width:100%;
-                height:calc(100vh - 50px);
-                background:#333;
-                top:50px;
-                left:-100%;
-                transition:0.5s;
-            }
-            header nav.active {
-                left:0;
-            }
-            header nav ul{
-                display:block;
-                text-align:center;
-            }
-            header nav ul li a
-            {
-                border-bottom:1px solid rgba(0,0,0,.2);
-            }
 
-        }
-        /*  .header
-          {!**!
-              background-color:green;
-              color: white;
-              padding: 6px;
-              font-size: 120%;
-              margin-bottom: 0%;
-          }*/
-        @media (min-width:891px)
-        {
-            .contact{
-                text-align:center;
-                margin-top:150px;
-            }
-            .info
-            {
-                text-align:center;
-                margin-top:15px;
-
-            }
-
-        }
+        
 
         .contact {
             background-color:lightgreen;
             color: black;
             text-align:center;
-            margin-top:8%;
+            margin-top:10%;
             width:98%;
             position: relative;
-/*
-            width: fit-content;
-*/
+            /*
+                        width: fit-content;
+            */
         }
         .info {
             color: black;
@@ -191,7 +83,7 @@
             /*  background: #505050;*/
         }
         .container {
-             display: inline-block ;
+            display: inline-block ;
         }
 
         .eminfo {
@@ -217,37 +109,13 @@
 </head>
 <body>
 
-<header>
-    <img class="logo">
-    <img src="image/pakflix1.png" width="180"  height="100">
-    </div>
-    <nav>
-        <ul>
-            <li><a href="About.html" class="active">About</a></li>
-            <li><a href="contact.html">Contact</a></li>
-            <li><a href="registration.html">Registration</a></li>
-            <li><a href="login.html">Login</a></li>
-        </ul>
-    </nav>
-    <div class="menu-toggle"><i class="fa fa-bars" aria-hidden="true"></i>
-
-    </div>
-</header>
-<script type="application/javascript">
-    $(document).ready(function()
-    {
-        $('.menu-toggle').click(function()
-        {
-            $('nav').toggleClass('active')
-        })
-    });
-</script>
-
+<div id="wrapper">
+<div id="main-content">
 <div class="row" >
-        <div class="  col-12 ">
-            <div class="contact">
-                <h2> <strong> Contact us </strong> <i class="fas fa-phone-square"></i> </h2>
-            </div>
+    <div class=" col-12 ">
+        <div class="contact">
+            <h2> <strong> Contact us </strong> <i class="fas fa-phone-square"></i> </h2>
+        </div>
         <div class="container">
             <div class=" info "class=" col-12 col-sm-8">
                 <p>
@@ -257,23 +125,23 @@
                 </p>
             </div>
         </div>
-            <div>
+        <div>
             <img src="image/location.jpg" style="max-width:25%; max-height:10%; margin-left:40%; display: inline-block ; " >
-            </div>
         </div>
+    </div>
 
     <div class="eminfo"class=" col-12 col-sm-8 col-md-8 col-lg-8 col-xl-6">
-            <form class="form-container">
+        <form class="form-container">
             <h2 style="background-color:lightgreen; width:100%"> <strong> Email us: </strong> <i class="fas fa-envelope-open"></i> </h2>
             <span >
                 <div class="backg">
                 <input style="background-color: lightgreen; " class="form-control" size="5%"
-                id="namee" placeholder="NAME" required pattern="[a-zA-Z\-'\s]+">
+                       id="namee" placeholder="NAME" required pattern="[a-zA-Z\-'\s]+">
                 </div>
                 <br><br>
                  <div class="backg">
                     <input style="background-color: lightgreen;" margin-top="-1%"  margin-left="20%" size="45%" class="form-control"
-                id="email" placeholder="Email" required pattern="^[a-z\d.-_]{3,15}([a-z\d.-_]{0,10})?(@)[a-z]{5,10}(\.)[a-z]{3}">
+                           id="email" placeholder="Email" required pattern="^[a-z\d.-_]{3,15}([a-z\d.-_]{0,10})?(@)[a-z]{5,10}(\.)[a-z]{3}">
                     </div>
                 <br><br>
          <div class="backg">
@@ -288,15 +156,16 @@
             </span>
             <br>
             <input  type="submit" value="Send" class="wpcf7-form-control wpcf7-submit send-btn">
-            </form>
-        </div>
+        </form>
     </div>
 </div>
-<footer>
-    <div class=" footer">
-        PakFlix(This Website is just for Pakistan flims and bookings)
-    </div>
-</footer>
+</div>
+    <?php require "Footer.php"?>
+</div>
+
+
 
 </body>
 </html>
+
+
