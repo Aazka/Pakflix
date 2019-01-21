@@ -2,7 +2,7 @@
 require "Header.php";
 require "db_connection.php";
 //require "Footer.php";
-
+//require "Footer.php";
 if(isset($_POST['sign_up'])){
     $fname = $_POST['first_name'];
     $lname = $_POST['last_name'];
