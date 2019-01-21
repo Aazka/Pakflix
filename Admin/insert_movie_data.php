@@ -1,5 +1,6 @@
 <?php
 require "db_connection.php";
+
 if(isset($_POST['insert_Movie']))
 {
     /*this is for insertion*/
