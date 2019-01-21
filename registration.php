@@ -1,3 +1,38 @@
+<?php
+require "Header.php";
+require "db_connection.php";
+//require "Footer.php";
+//require "Footer.php";
+if(isset($_POST['sign_up'])){
+    $fname = $_POST['first_name'];
+    $lname = $_POST['last_name'];
+    $email = $_POST['email'];
+    $pass = $_POST['pass'];
+    $gender = "gender";
+    $reg_pass = "/(\d|\w|\.|-){0,15}[A-Z](\d|\w|\.|-){0,15}/";
+    $reg_email = "/(\d|\w|\.|-){1,30}@(gmail|yahoo|hotmail)\.com/";
+
+    $insert = "insert into users_info(first_name, last_name, email, password, gender)
+                                values('$fname','$lname','$email','$pass','$gender')";
+    echo $insert;
+    mysqli_query($conn, $insert);
+    /*if(preg_match($reg_email, $email)) {
+        if (preg_match($reg_pass, $pass)) {
+            $insert = "insert into users_info(first_name, last_name, email, password, gender)
+                                values('$fname','$lname','$email','$pass','$gender')";
+            mysqli_query($dbname, $insert);
+        } else {
+            echo "Invalid Password Enter";
+        }
+    }
+    else {
+        echo "Invalid Email Enter";
+    }*/
+
+}
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <meta name="viewport" content="width=device-width initial-scale=1.0">
@@ -15,8 +50,8 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="style2.css">
     <style>
-        body{
-            background-image: url("image/login.jpg");
+body{
+    background-image: url("image/login.jpg");
         }
         .footer .widgets h4
         {
@@ -31,9 +66,8 @@
 </head>
 <body>
 <div id="wrapper">
-    <div id="header">
+<!--    <div id="header">
         <header class="header">
-            <!--  NavBar Area -->
             <nav class="navbar navbar-expand-md navbar-dark bg-warning navbar-fixed-top websiteheader"  >
                 <div>
                     <img src="image/pakflix1.png" alt="logo" style="width: 75px;height:75px">
@@ -49,11 +83,11 @@
                     <ul class= "nav navbar-nav navbar-right navbarcolumn" >
 
                         <li ><a href="index.html" class="fa fa-sign-in-alt" > Home</a></li>
-                        <li></i> <a href="about.php" class="fa fa-user"> About</a></li>
+                        <li></i> <a href="about.html" class="fa fa-user"> About</a></li>
                         <li><a href="#" class="fa fa-envelope"> Contact</a></li>
                         <li><a href="registration.html" class="fa fa-sign-in-alt" > Register</a></li>
                         <li >
-                            <a href="login.php" class="fa fa-sign-in-alt" style="padding-right: 30px" > Login</a>
+                            <a href="login.html" class="fa fa-sign-in-alt" style="padding-right: 30px" > Login</a>
                         </li>
 
 
@@ -62,21 +96,22 @@
 
             </nav>
         </header>
-    </div>
+    </div>-->
     <div id="main-content">
     <section class="container-fluid">
         <section class="row justify-content-center">
             <section class="col-12 col-sm-6 col-md-3">
-                    <form class="form-container">
+                    <form class="form-container" method="post" action="registration.php">
                         <h1>Registration Form</h1>
+
                         <div class="form-group">
                             <label for="exampleInputFirstName">First Name</label>
-                            <input type="First Name" class="form-control" id="exampleInputFirstName" placeholder="First Name" required
+                            <input type="First Name" class="form-control" name="first_name" id="first_name"  placeholder="First Name" required
                             pattern="^[a-zA-z]+[^#&<>\~;$^%{}?,]$">
                         </div>
                         <div class="form-group">
                             <label for="exampleInputLastName">Last Name</label>
-                            <input type="Last Name" class="form-control" id="exampleInputLastName" placeholder="Last Name" required
+                            <input type="Last Name" class="form-control" name="last_name" id="last_name"  placeholder="Last Name" required
                                    pattern="^[a-zA-z0-9]+[^#&<>\~;$^%{}?,]$">
                         </div>
                        <!-- <div class="form-group">
@@ -85,24 +120,24 @@
                         </div>-->
                         <div class="form-group">
                             <label for="exampleInputEmail1">Email</label>
-                            <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email" required
+                            <input type="email" class="form-control" name="email" id="email" placeholder="Email" required
                             pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$">
                         </div>
 
                         <div class="form-group">
                             <label for="exampleInputPassword1">Password</label>
-                            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" required
+                            <input type="password" class="form-control" name="pass" id="pass"  placeholder="Password" required
                             pattern="^[a-zA-z0-9]+[^#&<>\~;$^%{}?,]$">
                         </div>
                         <div class="form-group">
                             <label for="exampleInputPassword2">Confirmed Password</label>
-                            <input type="Confirmed password" class="form-control" id="exampleInputPassword2" placeholder="Confirmed Password" required
+                            <input type="Confirmed password" class="form-control" id="pass" placeholder="Confirmed Password" required
                             pattern="^[a-zA-z0-9]+[^#&<>\~;$^%{}?,]$">
                         </div>
                         <div class="form-group">
                             <label>Choose Gender</label>
                             <select class="form-control">
-                                <option value="Female">Female<?/optionr>
+                                <option value="Female" ">Female</option>
                                 <option value=Male">Male</option>
                             </select>
                         </div>
@@ -111,7 +146,7 @@
                                 <input type="checkbox"> Remember me
                             </label>
                         </div>
-                        <button type="Reset" class="btn btn-success btn-block">Sign up</button>
+                        <button type="Reset" class="btn btn-success btn-block" name="sign_up" id="sign_up">Sign up</button>
                     </form>
                 </form>
             </section>
@@ -157,3 +192,4 @@
 
 </body>
 </html>
+

@@ -6,7 +6,7 @@
 <meta name="author" content="Unbreen,Shams,Mayda,Saman,Adhina,Aazka">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Login</title>
 
     <!-- Bootstrap -->
     <link rel="stylesheet" href="bootstrap.css">
@@ -21,11 +21,9 @@
         body{
             background-image: url("image/login.jpg");
         }
-
         .footer .widgets h4
         {
             color: #dee2e6;
-
         }
         .footer .widgets p
         {
@@ -36,9 +34,12 @@
 </head>
 <body>
 <div id="wrapper">
-    <div id="header">
+    <?php
+    require "Header.php"
+    ?>
+    <!--<div id="header">
         <header class="header">
-            <!--  NavBar Area -->
+              NavBar Area
             <nav class="navbar navbar-expand-md navbar-dark bg-warning navbar-fixed-top websiteheader"  >
                 <div>
                     <img src="image/pakflix1.png" alt="logo" style="width: 75px;height:75px">
@@ -54,11 +55,11 @@
                     <ul class= "nav navbar-nav navbar-right navbarcolumn" >
 
                         <li ><a href="index.html" class="fa fa-sign-in-alt" > Home</a></li>
-                        <li></i> <a href="about.html" class="fa fa-user"> About</a></li>
+                        <li></i> <a href="about.php" class="fa fa-user"> About</a></li>
                         <li><a href="#" class="fa fa-envelope"> Contact</a></li>
                         <li><a href="registration.html" class="fa fa-sign-in-alt" > Register</a></li>
                         <li >
-                            <a href="login.html" class="fa fa-sign-in-alt" style="padding-right: 30px" > Login</a>
+                            <a href="login.php" class="fa fa-sign-in-alt" style="padding-right: 30px" > Login</a>
                         </li>
 
 
@@ -67,7 +68,7 @@
 
             </nav>
         </header>
-    </div>
+    </div>-->
     <div id="main-content">
         <section class="container-fluid">
             <section class="row justify-content-center">
@@ -91,7 +92,7 @@
             </section>
         </section>
     </div>
-    <div id="footer">
+    <!--<div id="footer">
         <div class="footer">
             <div class="widget-footer">
                 <div class="wrap-container">
@@ -106,7 +107,7 @@
                         <p> For latest news and updates sign up below and stay updated.....</p>
                         <p><strong>Email</strong></p>
                         <input type="text" class="subscribe-text" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"><br>
-                        <!--<input type="text" value="Subscribe" class="subscribe-btn">-->
+                        <input type="text" value="Subscribe" class="subscribe-btn">
                         <button type="Subscribe" class="subscribe-btn">Subscribe</button>
                     </div>
                     <div class="widgets">
@@ -128,7 +129,10 @@
                 <p>copyright &copy; 2018</p>
             </div>
         </div>
-    </div>
+    </div>-->
+    <?php
+    require "Footer.php"
+    ?>
 </div>
 </body>
 </html>
