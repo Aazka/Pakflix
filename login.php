@@ -10,16 +10,13 @@ if(isset($_POST['log_in']))
     {
         echo "plz follow the format";
     }
-    else
-    {
+    else {
         $login_user = "select * from user_info where login_exampleInputEmail1='$email' AND login_exampleInputPassword1='$password'";
         $run_user = mysqli_query($con, $login_user);
         $check_user = mysqli_num_rows($run_user);
-        if($check_user==0){
+        if ($check_user == 0) {
             $error_msg = 'Password or Email is wrong, try again';
-        }
-        else
-        {
+        } else {
             header('location:index.php?logged_in=You have successfully logged in!');
         }
     }
