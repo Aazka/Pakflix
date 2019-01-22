@@ -10,6 +10,19 @@ if(isset($_POST['log_in']))
     {
         echo "plz follow the format";
     }
+    else
+    {
+        $login_user = "select * from user_info where login_exampleInputEmail1='$email' AND login_exampleInputPassword1='$password'";
+        $run_user = mysqli_query($con, $login_user);
+        $check_user = mysqli_num_rows($run_user);
+        if($check_user==0){
+            $error_msg = 'Password or Email is wrong, try again';
+        }
+        else
+        {
+            header('location:index.php?logged_in=You have successfully logged in!');
+        }
+    }
 }
 ?>
 
@@ -33,7 +46,7 @@ if(isset($_POST['log_in']))
     <div id= "maincontent">
         <div class="row login">
             <div class="col-md-4 offset-md-4 col-sm-6 offset-sm-3 col-xs-12">
-                <form class="form-container bg-white" action="Index.php">
+                <form class="form-container bg-white" action="index.php">
                     <h1 style="margin: 18px 0px;font-weight: bold; font-size: 70px;font-family: 'sans-serif';color: #545b62"> Login</h1>
                     <div class="form-group" style="margin: 0px 0px">
                         <label for="login_exampleInputEmail1" class="float-left" style=" font-weight: bold; font-size: 15px;font-family: 'Hobo Std';color: #545b62">Email </label>
