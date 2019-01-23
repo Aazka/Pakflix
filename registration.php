@@ -1,6 +1,6 @@
 <?php
 require "Header.php";
-require "database/db_connection.php";
+require "db_connection.php";
 //require "Footer.php";
 if(isset($_POST['sign_up'])){
     print_r($_POST);
