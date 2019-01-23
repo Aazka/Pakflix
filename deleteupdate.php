@@ -1,5 +1,5 @@
 <?php
-require 'db_connection.php';
+require 'database/db_connection.php';
 if(isset($_POST['update'])) { // && isset($_POST['delete'])
     $titles = $_POST['m_title'];
     $genre = NULL;
@@ -18,7 +18,6 @@ if(isset($_POST['update'])) { // && isset($_POST['delete'])
     $dirs = $_POST['d_name'];
     $wris = $_POST['w_name'];
     $screen_type = NULL;
-
 
     if (!empty($_POST['st'])) {
         foreach ($_POST['st'] as $value) {
@@ -83,7 +82,7 @@ if (isset($_POST['delete'])) {
     $delete = "delete from movies_data where id = '$_POST[MID]'";
     mysqli_query($con, $delete);
 }
-
+//done
 ?>
 <!DOCTYPE html>
 <html lang="en">

@@ -1,6 +1,7 @@
 <?php
 require "Header.php";
-require "db_connection.php";
+require "database/db_connection.php";
+
 //require "Footer.php";
 if(isset($_POST['sign_up'])){
     print_r($_POST);
@@ -9,26 +10,13 @@ if(isset($_POST['sign_up'])){
     $email = $_POST['email'];
     $pass = $_POST['pass'];
     $gender = "gender";
-    $reg_pass = "/(\d|\w|\.|-){0,15}[a-z|A-Z]?(\d|\w|\.|-){0,15}/";
+    $reg_pass = "/(\d|\w|\.|-){0,15}[A-Z](\d|\w|\.|-){0,15}/";
     $reg_email = "/(\d|\w|\.|-){1,30}@(gmail|yahoo|hotmail)\.com/";
+
     $insert = "insert into users_info(first_name, last_name, email, password, gender)
                                 values('$fname','$lname','$email','$pass','$gender')";
     echo $insert;
     mysqli_query($con, $insert);
-    if(mysqli_query($selectresult)>0)
-    {
-        $msg = 'email already exists';
-    }
-    elseif($password != $cpassword){
-        $msg = "passwords doesn't match";
-    }
-    else{
-        $query = "INSERT INTO `register` (username, password,confirmpassword, email) VALUES ('$username', '$password', '$cpassword', '$email')";
-        $result = mysql_query($query);
-        if($result){
-            $msg = "User Created Successfully.";
-        }
-    }
 
 
 }
@@ -73,11 +61,11 @@ if(isset($_POST['sign_up'])){
                     </div>
                     <div class="form-group" style="margin: 0px 0px">
                         <label for="exampleInputPassword1"  class="float-left" style=" font-weight: bold; font-size: 15px;font-family: 'sans-serif';color: #545b62">Password</label>
-                        <input type="password" class="form-control" name="pass" id="pass" required pattern="(\d|\w|\.|-){0,15}[A-Z](\d|\w|\.|-){0,15}" id="signin_exampleInputPassword1" placeholder="Password" style=" font-weight: lighter; font-size: 15px;font-family: 'Hobo Std';color: #545b62">
+                        <input type="password" class="form-control" name="pass" id="pass" required pattern="(\d|\w|\.|-){0,15}[A-Z](\d|\w|\.|-){0,15}" id="signin_exampleInputPassword1" placeholder="Password" style=" font-weight: lighter; font-size: 15px;font-family: 'Hobo Std';color: #545b62" pattern="^[a-zA-z0-9]+[^#&<>\~;$^%{}?,]$">
                     </div>
                     <div class="form-group" style="margin: 0px 0px">
                         <label for="exampleInputPassword2"  class="float-left" style=" font-weight: bold; font-size: 15px;font-family: 'sans-serif';color: #545b62">Confirmed Password</label>
-                        <input type="password" class="form-control" id="pass" required pattern="(\d|\w|\.|-){0,15}[a-zA-Z]?(\d|\w|\.|-){0,15}" id="signin_exampleInputPassword2" placeholder="confirmed Password" style=" font-weight: lighter; font-size: 15px;font-family: 'Hobo Std';color: #545b62" <!--pattern="^[a-zA-z0-9]+[^#&<>\~;$^%{}?,]$"-->>
+                        <input type="password" class="form-control" id="pass" required pattern="(\d|\w|\.|-){0,15}[A-Z](\d|\w|\.|-){0,15}" id="signin_exampleInputPassword2" placeholder="confirmed Password" style=" font-weight: lighter; font-size: 15px;font-family: 'Hobo Std';color: #545b62" pattern="^[a-zA-z0-9]+[^#&<>\~;$^%{}?,]$">
                     </div>
                     <div class="form-group" style="margin: 0px 0px">
                         <label class="float-left" style=" font-weight: bold; font-size: 15px;font-family: 'Hobo Std';color: #545b62">Choose Gender</label>
@@ -99,3 +87,6 @@ if(isset($_POST['sign_up'])){
 </div>
 
 </body>
+
+
+

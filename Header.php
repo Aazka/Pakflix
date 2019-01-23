@@ -15,12 +15,12 @@
             <div class=" collapse navbar-collapse" id="collapse_target">
                 <ul class= "nav navbar-nav navbar-right navbarcolumn" >
 
-                    <li ><a href="index.html" class="fa fa-sign-in-alt" > Home</a></li>
-                    <li></i> <a href="about.html" class="fa fa-user"> About</a></li>
-                    <li><a href="#" class="fa fa-envelope"> Contact</a></li>
-                    <li><a href="registration.html" class="fa fa-sign-in-alt" > Register</a></li>
+                    <li ><a href="index.php" class="fa fa-sign-in-alt" > Home</a></li>
+                    <li></i> <a href="about.php" class="fa fa-user"> About</a></li>
+                    <li><a href="contact.php" class="fa fa-envelope"> Contact</a></li>
+                    <li><a href="registration.php" class="fa fa-sign-in-alt" > Sign In</a></li>
                     <li >
-                        <a href="login.html" class="fa fa-sign-in-alt" style="padding-right: 30px" > Login</a>
+                        <a href="login.php" class="fa fa-sign-in-alt" style="padding-right: 30px" > Login</a>
                     </li>
 
 
