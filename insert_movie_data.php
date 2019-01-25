@@ -69,6 +69,23 @@ if(isset($_POST['insert_Movie']))
         echo "server side validation invalid";
     }
 }
+if (isset($_POST['save'])) {
+    $username = $_POST['username'];
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+    $sql = "SELECT * FROM users WHERE username='$username'";
+    $results = mysqli_query($db, $sql);
+    if (mysqli_num_rows($results) > 0) {
+        echo "exists";
+        exit();
+    }else{
+        $query = "INSERT INTO users (username, email, password) 
+  	       	VALUES ('$username', '$email', '".md5($password)."')";
+        $results = mysqli_query($db, $query);
+        echo 'Saved!';
+        exit();
+    }
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -127,15 +144,15 @@ if(isset($_POST['insert_Movie']))
                     </div>
                     <table>
                         <tr>
-                            <th><input type="checkbox" name="genre[]" value="comedy">Comedy</th>
-                            <th><input type="checkbox" name="genre[]" value="action">Action</th>
-                            <th><input type="checkbox" name="genre[]" value="drama">Drama</th>
+                            <th><input type="checkbox" id="g"  name="genre[]" value="comedy">Comedy</th>
+                            <th><input type="checkbox" id="g" name="genre[]" value="action">Action</th>
+                            <th><input type="checkbox" id="g" name="genre[]" value="drama">Drama</th>
 
                         </tr>
                         <tr>
-                            <th><input type="checkbox" name="genre[]" value="romance">Romance</th>
-                            <th><input type="checkbox" name="genre[]" value="fantacy">Fantacy</th>
-                            <th><input type="checkbox" name="genre[]" value="crime">crime</th>
+                            <th><input type="checkbox" id="g" name="genre[]" value="romance">Romance</th>
+                            <th><input type="checkbox" id="g" name="genre[]" value="fantacy">Fantacy</th>
+                            <th><input type="checkbox" id="g" name="genre[]" value="crime">crime</th>
                         </tr>
                     </table>
                 </div>
@@ -153,10 +170,10 @@ if(isset($_POST['insert_Movie']))
 
                     <table>
                         <tr>
-                            <th><input type="checkbox" name="st[]" value="2d">2D</th>
+                            <th><input type="checkbox" name="st[]"  id="c1" value="2d">2D</th>
                         </tr>
                         <tr>
-                            <th><input type="checkbox" name="st[]" value="3d">3D</th>
+                            <th><input type="checkbox" name="st[]" id="c1" value="3d">3D</th>
                         </tr>
                     </table>
 
@@ -241,33 +258,142 @@ if(isset($_POST['insert_Movie']))
         <div class="row my-3">
             <div class="d-none d-sm-block col-sm-3 col-md-4 col-lg-2 col-xl-2 mt-auto"></div>
             <div class="col-sm-9 col-md-8 col-lg-4 col-xl-4">
-                <button type="submit" name="insert_Movie" class="btn btn-primary btn-block"><i class="fas fa-plus"></i> Insert Now </button>
+                <button type="submit" name="insert_Movie" id="data_btn" class="btn btn-primary btn-block"><i class="fas fa-plus"></i> Insert Now </button>
             </div>
         </div>
     </form>
 </div>
-<!--<script>
-    function processingString()
-    {
-        var inputString = document.getElementById("duration").value;
-        var regex = /[1-9]+(0{1,2})?\s(minutes|m|mint)/g;
-        var result = inputString.match(regex);
-
-        if (result != null) {
-            // Add the retrieved numbers to the textarea element
-            for (var i = 0; i < result.length; i++) {
-                result[i]=result[i].replace("minutes","m");
-                result[i]=result[i].replace("mint","m");
-
-                document.getElementById("duration").value=result[i];
+<script type="text/javascript">
+    $('document').ready(function(){
+        let name_state = false;
+        $('#m_title').on('blur', function(){
+            var m_title = $('#m_title').val();
+            if (m_title == '') {
+                name_state = false;
+                return;
             }
-        }
-        else {
-            document.getElementById("duration").value ='Result is null';
-        }
-    }
-    }
+            $.ajax({
+                url: 'insert_movie_data.php',
+                type: 'post',
+                data: {
+                    'name_check' : 1,
+                    'm_title' : m_title,
+                },
+                success: function(response){
+                    if (response == 'taken' ) {
+                        name_state = false;
+                        $('#m_title').parent().removeClass();
+                        $('#m_title').parent().addClass("form_error");
+                        $('#m_title').siblings("span").text('Sorry... Username already taken');
+                    }else if (response == 'not_taken') {
+                        name_state = true;
+                        $('#m_title').parent().removeClass();
+                        $('#m_title').parent().addClass("form_success");
+                        $('#m_title').siblings("span").text('Username available');
+                    }
+                }
+            });
+        });
+
+
+
+        $('#data_btn').on('click', function(){
+
+
+
+
+            let m_title = $('#m_title').val();
+            let g = $('#g').val();
+            let c1 = $('#c1').val();
+            let pro_image = $('#pro_image').val();
+            let rating = $('#rating').val();
+            let duration = $('#duration').val();
+            let date = $('#date').val();
+            let d_name = $('#d_name').val();
+            let w_name = $('#w_name').val();
+
+            if (name_state == false ) {
+                $('#error_msg').text('Fix the errors in the form first');
+            }else{
+                // proceed with form submission
+                $.ajax({
+                    url: 'register.php',
+                    type: 'post',
+                    data: {
+                        'save' : 1,
+                         'm_title' : m_title,
+                         'g' : g,
+                         'c1' : c1,
+                         'pro_image' : pro_image,
+                         'rating' : rating,
+                         'duration' : duration,
+                         'date' : date,
+                         'd_name' : d_name,
+                         'w_name' : w_name,
+                    },
+                    success: function(response){
+                        alert('movie saved');
+
+                        let m_title = $('#m_title').val(" ");
+                        let g = $('#g').val(" ");
+                        let c1 = $('#c1').val(" ");
+                        let pro_image = $('#pro_image').val(" ");
+                        let rating = $('#rating').val(" ");
+                        let duration = $('#duration').val(" ");
+                        let date = $('#date').val(" ");
+                        let d_name = $('#d_name').val(" ");
+                        let w_name = $('#w_name').val(" ");
+                    }
+                });
+            }
+        });
+    });
 </script>
---></body>
+</body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
