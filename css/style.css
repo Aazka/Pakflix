@@ -33,6 +33,7 @@ html, body
     padding:0;
 
 }
+
 a:hover
 {
     background-position: right;
@@ -45,29 +46,27 @@ a:hover
 .navbar-text a:hover{
 
 
-    background: #491217;
+    background: grey;
     text-decoration: none;
 }
 .navbar-dark .navbar-nav li a
 {
-    color:saddlebrown;
+    color: grey;
 }
 .navbar-dark .navbar-nav li a:hover {
 
-    background: #491217;
+    background: grey;
 }
 .navbar-dark .navbar-nav li a:hover, .navbar-dark .navbar-nav li a:active
 {
-    color:brown;
+    color: grey;
 }
 .navbar-dark .navbar-nav li a:hover, .navbar-dark .navbar-nav li a select
 {
-    color: brown;
+    color: grey;
 }
 
-/*form{
-    background: #fff;
-}*/
+
 .form-container1
 {
     background: #fff;
@@ -77,22 +76,7 @@ a:hover
     margin-top:35vh;
     margin-bottom: 40vh;
 }
-/*.form-container_m
-{
-    margin-top:300px;
-}*/
-/*
-.form-container
-{
-    position:absolute;
-    top:20vh;
-    margin-bottom: 40vh;
-    background: #fff;
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0px 0px 10px 0px #000;
-}
-*/
+
 
 .footer{
     clear:both;
@@ -145,7 +129,7 @@ a:hover
 .subscribe-btn:hover
 {
     cursor: pointer;
-    background-image: linear-gradient(#3bad33,#baefab);
+    background-image: linear-gradient(#34ce57,#baefab);
 }
 .footer .widgets img
 {
@@ -189,20 +173,20 @@ a:hover
 
 @media(min-width: 1025px) {
     .con{
-        padding-top: 86px;
+        padding-top: 97px;
     }
 }
 
 @media(max-width: 1024px) {
 
     .con {
-        padding-top: 86px;
+        padding-top: 97px;
     }
 }
 
 @media(max-width: 786px) {
     .con{
-        padding-top: 86px;
+        padding-top: 97px;
     }
 
 }
@@ -210,7 +194,7 @@ a:hover
 @media(max-width: 486px) {
 
     .con{
-        padding-top: 86px;
+        padding-top: 97px;
     }
 }
 
@@ -296,7 +280,20 @@ a:hover
 
 
 }
+@media(max-width: 1024px) {
 
+    .login {
+        padding-top: 8%;
+    }
+
+    .signin {
+        padding-top: 8%;
+    }
+
+    .contain {
+        padding-top: 50px;
+    }
+}
 @media(max-width: 786px) {
 
 
@@ -351,8 +348,8 @@ a:hover
     -webkit-box-shadow: 17px 18px 20px 3px rgba(0,0,0,0.75);
     -moz-box-shadow: 17px 18px 20px 3px rgba(0,0,0,0.75);
     box-shadow: 17px 18px 20px 3px #545b62;
-    margin-top:15%;
-    margin-bottom: 55%;
+    margin-top:20%;
+    margin-bottom: 75%;
 }
 .signin {
     text-align: center;
@@ -371,6 +368,6 @@ a:hover
     -webkit-box-shadow: 17px 18px 20px 3px rgba(0,0,0,0.75);
     -moz-box-shadow: 17px 18px 20px 3px rgba(0,0,0,0.75);
     box-shadow: 17px 18px 20px 3px saddlebrown;
-    margin-top:15%;
-    margin-bottom: 55%;
+    margin-top:20%;
+    margin-bottom: 75%;
 }
