@@ -1,4 +1,20 @@
-<?php require "Header.php"?>
+<?php require "Header.php";
+if(isset($_POST['Send']))
+{
+    $email=$_POST['email'];
+    $name=$_POST['NAME'];
+    $num=$_POST['Number'];
+    $reg_email='/[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}/';
+    $reg_name='[a-zA-Z\-\'\s]+';
+    $reg_num='^(0092|\+92)(\s|-)?3\d{2}(\s|-)?(\d{7})|^03\d{2}(\s|-)?(\d{7})';
+    if(!(preg_match($reg_email, $email) AND preg_match($reg_name, $name)  AND preg_match($reg_num, $num)))
+    {
+        echo "plz follow the format";
+    }
+}
+?>
+
+
 <!DOCTYPE html>
 <html lang="en" xmlns:margin-left="http://www.w3.org/1999/xhtml">
 <meta name="viewport" content="width=device-width initial-scale=1.0">
@@ -141,7 +157,7 @@
                 <br><br>
                  <div class="backg">
                     <input style="background-color: lightgreen;" margin-top="-1%"  margin-left="20%" size="45%" class="form-control"
-                           id="email" placeholder="Email" required pattern="^[a-z\d.-_]{3,15}([a-z\d.-_]{0,10})?(@)[a-z]{5,10}(\.)[a-z]{3}">
+                           id="email" placeholder="Email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}">
                     </div>
                 <br><br>
          <div class="backg">
@@ -155,7 +171,7 @@
               <textarea style="background-color:lightgreen;width:30%;" margin-left="10%"placeholder="Your Message Here"  cols="47" rows="10"></textarea >
             </span>
             <br>
-            <input  type="submit" value="Send" class="wpcf7-form-control wpcf7-submit send-btn">
+            <input  type="submit" name="Send" value="Send" class="wpcf7-form-control wpcf7-submit send-btn">
         </form>
     </div>
 </div>
