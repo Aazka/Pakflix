@@ -1,4 +1,8 @@
 <?php
+if(!isset($_SESSION['user_email'])){
+    header('location: login.php?not_admin=You are not Admin!');
+}
+
 require "db_connection.php";
 
 if(isset($_POST['insert_Movie']))
@@ -57,7 +61,7 @@ if(isset($_POST['insert_Movie']))
         AND preg_match($regex_running_time, $d)
         AND preg_match($regex_image, $image)) {
         $image_tmp = $_FILES['pro_image']['tmp_name'];
-        move_uploaded_file($image_tmp,"image/$image");
+        move_uploaded_file($image_tmp,"Images/$image");
         $insertQuery = "insert into movies_data(Title,Rating,Release_Date,Director,Writer,Genre,Screening_Type,Running_Time,Image) values('$title','$r','$rd','$dir','$wri','$g','$s','$d','$image')";
         $result = mysqli_query($con , $insertQuery);
         //echo
@@ -115,8 +119,8 @@ if(isset($_POST['insert_Movie']))
                     <div class="input-group-prepend">
                         <div class="input-group-text"><i class="fas fa-file-signature"></i></div>
                     </div>
-                    <input type="text" class="form-control" id="m_title" name="m_title" placeholder="Enter Movie Title" required pattern="^([a-zA-Z0-9]+\s?)+$">
-                    <!-- <div>< /*echo $mov_title */</div>-->
+                    <input type="text" class="form-control" id="m_title" name="m_title" placeholder="Enter Movie Title"  onkeyup="checkTitle(this.value)" required pattern="^([a-zA-Z0-9]+\s?)+$">
+                    <span class="text-danger" id="hint"></span>
                 </div>
             </div>
             <div class="d-none d-sm-block col-sm-3 col-md-4 col-lg-2 col-xl-2 mt-auto">
@@ -248,7 +252,25 @@ if(isset($_POST['insert_Movie']))
         </div>
     </form>
 </div>
-<!--<script>
+<script>
+
+    function checkTitle(str) {
+        if (str.length == 0) {
+            document.getElementById("hint").innerHTML = "";
+            return;
+        } else {
+            var xmlhttp = new XMLHttpRequest();
+            xmlhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    document.getElementById("hint").innerHTML = this.responseText;
+                }
+            };
+            xmlhttp.open("POST", "check_title.php?e=" + str, true);
+            xmlhttp.send();
+            //document.getElementById('hint').innerHTML = 'loading...';
+        }
+    }
+    /*
     function processingString()
     {
         var inputString = document.getElementById("duration").value;
@@ -269,7 +291,8 @@ if(isset($_POST['insert_Movie']))
         }
     }
     }
+*/
 </script>
---></body>
+</body>
 </html>
 
