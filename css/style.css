@@ -49,33 +49,27 @@ a:hover
     background: grey;
     text-decoration: none;
 }
-.navbar-dark .navbar-nav li a
-{
-    color: grey;
+.navbar-dark .navbar-nav li a {
+    color: red;
 }
 .navbar-dark .navbar-nav li a:hover {
+
+    color: red;
 
     background: grey;
 }
 .navbar-dark .navbar-nav li a:hover, .navbar-dark .navbar-nav li a:active
 {
-    color: grey;
+    color: red;
+    background: grey;
 }
 .navbar-dark .navbar-nav li a:hover, .navbar-dark .navbar-nav li a select
 {
-    color: grey;
+    color: red;
+    background: grey;
 }
 
 
-.form-container1
-{
-    background: #fff;
-    border-radius: 10px;
-    padding:30px;
-    box-shadow: 0px 0px 10px 0px #000;
-    margin-top:35vh;
-    margin-bottom: 40vh;
-}
 
 
 .footer{
@@ -266,6 +260,9 @@ a:hover
 }
 @media(min-width: 1025px) {
 
+    .forgot{
+        padding-top: 8%;
+    }
 
     .login{
         padding-top: 8%;
@@ -273,6 +270,8 @@ a:hover
     .signin {
         padding-top: 8%;
     }
+
+
     .form-container{
         width: 100%;
     }
@@ -282,11 +281,15 @@ a:hover
 }
 @media(max-width: 1024px) {
 
+    .forgot{
+        padding-top: 8%;
+    }
+
     .login {
         padding-top: 8%;
     }
 
-    .signin {
+    .sigin {
         padding-top: 8%;
     }
 
@@ -296,6 +299,9 @@ a:hover
 }
 @media(max-width: 786px) {
 
+    .forgot{
+        padding-top: 11%;
+    }
 
     .login{
         padding-top: 11%;
@@ -303,6 +309,7 @@ a:hover
     .signin {
         padding-top: 11%;
     }
+
     .form-container{
         width: 100%;
     }
@@ -311,6 +318,9 @@ a:hover
 }
 
 @media(max-width: 486px) {
+    .forgot{
+        padding-top: 17%;
+    }
 
 
     .login{
@@ -319,6 +329,7 @@ a:hover
     .signin {
         padding-top: 17%;
     }
+
     .form-container{
         width: 100%;
     }
@@ -361,13 +372,35 @@ a:hover
 }
 .form-containers
 {
-    height: 520px;
+    height: 530px;
+    padding-left: 15px;
+    padding-right: 15px;
+    border: 2px solid #545b62;
+    -webkit-box-shadow: 17px 18px 20px 3px rgba(0,0,0,0.75);
+    -moz-box-shadow: 17px 18px 20px 3px rgba(0,0,0,0.75);
+    box-shadow: 17px 18px 20px 3px saddlebrown;
+    margin-top:20%;
+    margin-bottom: 75%;
+}
+
+
+.forgot {
+    text-align: center;
+    padding-right: 0px;
+    padding-left: 0px;
+    width: 100%;
+    margin: 0px 0px;
+    padding-bottom: 30px;
+}
+.form-containerss
+{
+    height: 410px;
     padding-left: 15px;
     padding-right: 15px;
     border: 2px solid saddlebrown;
     -webkit-box-shadow: 17px 18px 20px 3px rgba(0,0,0,0.75);
     -moz-box-shadow: 17px 18px 20px 3px rgba(0,0,0,0.75);
     box-shadow: 17px 18px 20px 3px saddlebrown;
-    margin-top:20%;
+    margin-top:50%;
     margin-bottom: 75%;
 }

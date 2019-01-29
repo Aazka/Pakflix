@@ -5,7 +5,7 @@ $email=$_POST['exampleInputEmail1'];
 $password=$_POST['exampleInputPassword1'];
 $password2=$_POST['exampleInputPassword1'];
 $reg_email='/[a-z\d.-_]{3,15}([a-z\d.-_]{0,10})?(@)[a-z]{5,10}(\.)[a-z]{3}/';
-$reg_pass='(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}';
+$reg_pass='((\d|\w)+){5,}';//(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}';
 if(!(preg_match($reg_email, $email) AND preg_match($reg_pass, $password)AND preg_match($reg_pass, $password2)))
 {
 echo "plz follow the format";
@@ -49,7 +49,7 @@ echo "plz follow the format";
                         </div>
                         <div class="form-group">
                             <label for="exampleInputPassword1">Confirmed Password</label>
-                            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Confirmed Password" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}">
+                            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Confirmed Password" required pattern="^((\d|\w)+){5,}$"><!--(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}-->
                         </div>
                         <button type="submit" name="ForgetPass" class="btn btn-success btn-block">Submit</button>
                     </form>

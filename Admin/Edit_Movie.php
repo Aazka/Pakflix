@@ -1,4 +1,7 @@
 <?php
+if(!isset($_SESSION['user_email'])){
+    header('location: login.php?not_admin=You are not Admin!');
+}
 require 'db_connection.php';
 if(isset($_GET['Edit_Movie']))
 {
@@ -45,9 +48,25 @@ if(isset($_POST['update_movie'])) { // && isset($_POST['delete'])
             }
         }
     }
+    // $rs = $_POST['rating'];
     $rs = $_POST['rating'];
     $images = $_FILES['m_image']['name'];
     $images = $_FILES['m_image']['name'];
+    /* $regex_title = '/([a-zA-Z0-9]+\s?)+/';
+     $regex_rating = '/[1-9]0?\.[0-9]/';
+     $regex_director = '/([A-Z]{1}?|[a-z]+(\s|-|_|\.)?)+/';
+     $regex_writer = '/(([A-Z]{1}?|[a-z]+(\s|-|_|\.)?)+,?)+/';
+     $regex_running_time = '/[1-9]+(0{1,2})?\s(minutes|m|mint|min)/';//125 m, 125.365!,120 min
+     $regex_image = '/.+(png|jpg|jpeg)/';*/
+
+    /*$rs = $_POST['rating'];
+    $images = $_FILES['m_image']['name'];
+    $images = $_FILES['m_image']['name'];*/
+    /*if (preg_match($regex_title, $titles) AND preg_match($regex_rating, $rs)
+        AND preg_match($regex_director, $dirs)
+        AND preg_match($regex_writer, $wris)
+        AND preg_match($regex_running_time, $d)
+        AND preg_match($regex_image, $images)) {*/
 
     $image_tmp = $_FILES['m_image']['tmp_name'];
     move_uploaded_file($image_tmp, "Images/$images");
@@ -74,7 +93,8 @@ if(isset($_POST['update_movie'])) { // && isset($_POST['delete'])
                       where id = '$id'";
         mysqli_query($con, $insrt);
     }
-    header("location: index.php?view_movie");
+    header("location: index.php?View_Movie");
+//    }
 
 }
 
@@ -89,14 +109,16 @@ if(isset($_POST['update_movie'])) { // && isset($_POST['delete'])
             <div class="form-group row">
                 <label class="col-form-label col-sm-4 col-lg-3 d-none d-sm-block" for="m_title">Movie Title</label>
                 <div class="col-12 col-sm-8 col-lg-9">
-                    <input class="form-control" type="text" id="m_title" name="m_title" placeholder="Title" value="<?php echo $title; ?>">
+                    <input class="form-control" type="text" id="m_title" name="m_title" placeholder="Title" value="<?php echo $title; ?>"
+                           onkeyup="checkTitle(this.value)" required pattern="^([a-zA-Z0-9]+\s?)+$">
+                    <span class="text-danger" id="hint"></span>
                 </div>
             </div>
             <div class="form-group row">
                 <label class="col-form-label col-sm-4 col-lg-3 d-none d-sm-block" for="rating">Rating</label>
                 <div class="col-12 col-sm-8 col-lg-9">
                     <input class="form-control" type="text" id="rating" name="rating" placeholder="Rating" value="<?php echo $rating; ?>"
-                    >
+                           required pattern="^[1-9]0?\.[0-9]$">
                 </div>
             </div>
             <div class="form-group row">
@@ -111,14 +133,14 @@ if(isset($_POST['update_movie'])) { // && isset($_POST['delete'])
                 <div class="col-12 col-sm-8 col-lg-9">
                     <input class="form-control" type="text" id="d_name" name="d_name" placeholder="Director" value="<?php echo $dir; ?>"
 
-                    >
+                           required pattern="^([A-Z]{1}?|[a-z]+(\s|-|_|\.)?)+$">
                 </div>
             </div>
             <div class="form-group row">
                 <label class="col-form-label col-sm-4 col-lg-3 d-none d-sm-block" for="pro_desc">Writer</label>
                 <div class="col-12 col-sm-8 col-lg-9">
                     <input class="form-control"  name="w_name" id="w_name" placeholder="writer" value="<?php echo $wri; ?>"
-                    >
+                           required pattern="^(([A-Z]{1}?|[a-z]+(\s|-|_|\.)?)+,?)+$">
                 </div>
             </div>
             <div class="form-group row">
@@ -146,13 +168,13 @@ if(isset($_POST['update_movie'])) { // && isset($_POST['delete'])
                 <label class="col-form-label col-sm-4 col-lg-3 d-none d-sm-block" for="duration">Running Time</label>
                 <div class="col-12 col-sm-8 col-lg-9">
                     <input class="form-control"  name="duration" id="duration" placeholder="Duration" value="<?php echo $r; ?>"
-                    >
+                           required pattern="^[1-9]+(0{1,2})?\s(minutes|m|mint|min$" >
                 </div>
             </div>
             <div class="form-group row">
                 <label class="col-form-label col-sm-4 col-lg-3 d-none d-sm-block" for="pro_image">Product Image</label>
                 <div class="col-12 col-sm-8 col-lg-9">
-                    <input class="form-control-file" type="file" id="m_image" name="m_image">
+                    <input class="form-control-file" type="file" id="m_image" name="m_image" required pattern="^.+(png|jpg|jpeg)$">
                     <img src= 'Images/<?php echo $m_image;?>'  class='w-50 h-50'>
                 </div>
             </div>
@@ -165,3 +187,21 @@ if(isset($_POST['update_movie'])) { // && isset($_POST['delete'])
         </form>
     </div>
 </div>
+<script>
+    function checkTitle(str) {
+        if (str.length == 0) {
+            document.getElementById("hint").innerHTML = "";
+            return;
+        } else {
+            var xmlhttp = new XMLHttpRequest();
+            xmlhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    document.getElementById("hint").innerHTML = this.responseText;
+                }
+            };
+            xmlhttp.open("POST", "check_title.php?e=" + str, true);
+            xmlhttp.send();
+            //document.getElementById('hint').innerHTML = 'loading...';
+        }
+    }
+</script>

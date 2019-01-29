@@ -16,41 +16,36 @@ if(isset($_POST['Send']))
 
 
 <!DOCTYPE html>
-<html lang="en" xmlns:margin-left="http://www.w3.org/1999/xhtml">
-<meta name="viewport" content="width=device-width initial-scale=1.0">
-<meta name="keywords" content="HTML,CSS,XML,JavaScript">
-<meta name="description" content="Free Web tutorials">
-<meta name="author" content="Unbreen,Shams,Mayda,Saman,Adhina,Aazka">
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css">
-
+<html lang="en">
 <head>
-    <title>PAKFLIX</title>
+    <meta charset="UTF-8">
+    <title>Contact Us</title>
+
+    <!-- Bootstrap -->
     <link rel="stylesheet" href="css/bootstrap.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="css/style.css">
-    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">
-    </script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js">
-    </script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="css/style.css">
+
 
 
 
     <style>
-        input[id="namee"]:invalid {
+        input[id="username"]:invalid {
 
 
             color:red;
         }
-        input[id="namee"]:valid
+        input[id="username"]:valid
         {
 
 
         }
         input[id="email"]:invalid {
-            background-color: lightgreen;
-            color:red;
+            background-color:red;
 
         }
         input[id="email"]:valid
@@ -58,130 +53,48 @@ if(isset($_POST['Send']))
             background-color: lightgreen;
 
         }
-        input[id="Number"]:invalid {
-            background-color: lightgreen;
-            color:red;
-
-        }
-        input[id="Number"]:valid
-        {
-            background-color: lightgreen;
-
-        }
-        .backg
-        {
-            background-color: lightgreen;
-            width: 30%;
-            margin-left:35%;
-        }
 
 
-        
-
-        .contact {
-            background-color:lightgreen;
-            color: black;
-            text-align:center;
-            margin-top:10%;
-            width:98%;
-            position: relative;
-            /*
-                        width: fit-content;
-            */
-        }
-        .info {
-            color: black;
-            font-size:100%;
-            margin-left:44%;
-            text-align:center;
-            width:fit-content;
-
-            /*  background: #505050;*/
-        }
-        .container {
-            display: inline-block ;
-        }
-
-        .eminfo {
-            margin-left:0%;
-            margin-bottom:5%;
-            text-align:center;
-            margin-top:3%;
-            width:99%;
-            display:block;
-        }
-        .column {
-            float: left;
-            width: 50%;
-        }
-        /* Clear floats after the columns */
-        .row:after {
-            content: "";
-            display: table;
-            clear: both;
-        }
     </style>
+
+
 
 </head>
 <body>
-
 <div id="wrapper">
-<div id="main-content">
-<div class="row" >
-    <div class=" col-12 ">
-        <div class="contact">
-            <h2> <strong> Contact us </strong> <i class="fas fa-phone-square"></i> </h2>
-        </div>
-        <div class="container">
-            <div class=" info "class=" col-12 col-sm-8">
-                <p>
-                    <strong> Address: </strong> 1 - Khayaban-e-Jinnah Johar Town, Lahore Pakistan  <br>
-                    <strong> Phone: </strong> +92 203412345 <br>
-                    <strong> Email: </strong> samankhan@ucp.edu.pk
-                </p>
+    <div id= "maincontent">
+        <div class="row signin">
+            <div class="col-md-4 offset-md-4 col-sm-6 offset-sm-3 col-xs-12">
+                <form class="form-containers bg-white" method="post" action="" style="height: 364px">
+                    <h1 style="margin: 18px 0px;font-weight: bold; font-size: 52px;font-family: 'monospace';color: #545b62">Contact</h1>
+                    <div class="form-group" style="margin: 0px 0px">
+                        <label for="username" class="float-left" style=" font-weight: bold; font-size: 15px;font-family: 'monospace';color: #545b62">UserName</label>
+                        <input type="text" class="form-control" id="username" placeholder="UserName" required pattern="[a-zA-Z\-'\s]+" style=" font-weight: lighter; font-size: 15px;font-family: 'Hobo Std';color: black">
+                    </div>
+                    <div class="form-group" style="margin: 0px 0px">
+                        <label for="exampleInputEmail1" class="float-left" style=" font-weight: bold; font-size: 15px;font-family: 'monospace';color: #545b62">Email </label>
+                        <input type="email" class="form-control" id="email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}"placeholder="Email" style=" font-weight: lighter; font-size: 15px;font-family: 'Hobo Std';color: black">
+                    </div>
+                    <div class="form-group" style="margin: 0px 0px;padding-bottom: 14px">
+                        <label for="exampleInputPassword1"  class="float-left" style=" font-weight: bold; font-size: 15px;font-family: 'monospace';color: #545b62">Message</label>
+                        <textarea type="text" class="form-control" id="exampleInputPassword1" placeholder="Message" style=" font-weight: lighter; font-size: 15px;font-family: 'Hobo Std';color: black;padding-bottom: 14px;"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-warning  btn-block " class="form-control" style=" font-weight: bold; font-size: 15px;font-family: 'Hobo Std';color: #545b62">Send</button>
+                </form>
             </div>
         </div>
-        <div>
-            <img src="image/location.jpg" style="max-width:25%; max-height:10%; margin-left:40%; display: inline-block ; " >
-        </div>
     </div>
 
-    <div class="eminfo"class=" col-12 col-sm-8 col-md-8 col-lg-8 col-xl-6">
-        <form class="form-container">
-            <h2 style="background-color:lightgreen; width:100%"> <strong> Email us: </strong> <i class="fas fa-envelope-open"></i> </h2>
-            <span >
-                <div class="backg">
-                <input style="background-color: lightgreen; " class="form-control" size="5%"
-                       id="namee" placeholder="NAME" required pattern="[a-zA-Z\-'\s]+">
-                </div>
-                <br><br>
-                 <div class="backg">
-                    <input style="background-color: lightgreen;" margin-top="-1%"  margin-left="20%" size="45%" class="form-control"
-                           id="email" placeholder="Email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}">
-                    </div>
-                <br><br>
-         <div class="backg">
-        <input  style="background-color: lightgreen;"  size="45%" class="form-control"
-                id="Number" placeholder="Mobile Number" required pattern="^(0092|\+92)(\s|-)?3\d{2}(\s|-)?(\d{7})|^03\d{2}(\s|-)?(\d{7})">
-              </div>
-             </span>
 
-            <br><br>
-            <span>
-              <textarea style="background-color:lightgreen;width:30%;" margin-left="10%"placeholder="Your Message Here"  cols="47" rows="10"></textarea >
-            </span>
-            <br>
-            <input  type="submit" name="Send" value="Send" class="wpcf7-form-control wpcf7-submit send-btn">
-        </form>
-    </div>
-</div>
-</div>
-    <?php require "Footer.php"?>
-</div>
+    <?php require "Footer.php";
+    ?>
 
-
+</div>
 
 </body>
-</html>
+
+
+
+
 
 

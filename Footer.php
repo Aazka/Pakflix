@@ -1,32 +1,35 @@
-<div id="header">
-    <header class="header">
-        <!--  NavBar Area -->
-        <nav class="navbar navbar-expand-md navbar-dark bg-warning navbar-fixed-top websiteheader"  >
-            <div>
-                <img src="image/pakflix1.png" alt="logo" style="width: 75px;height:75px">
+<div id="footer">
+    <div class="footer">
+        <div class="widget-footer">
+            <div class="wrap-container">
+                <div class="widgets">
+                    <h4>Contact information</h4>
+                    <p> This is contact information so that you can touch with us is easily.</p>
+                    <p><strong>Phone:</strong>03054799126</p>
+                    <p><strong>Email</strong>ambermalik205@gmail.com</p>
+                </div>
+                <div class="widgets">
+                    <h4>Sign up for newspaper</h4>
+                    <p> if you want to get latest updates and news the please sign up for news the please sign up for news letter below:</p>
+                    <p><strong>Email</strong></p>
+                    <input type="text" class="subscribe-text"><br>
+                    <input type="text" value="Subscribe" class="subscribe-btn">
+                </div>
+                <div class="widgets">
+                    <h4>Follow on social media</h4>
+                    <li><a href="https://www.facebook.com"><span class="fab fa-facebook-square fa-2x "></span>Facebook</a></li>
+                    <li><a href="https://www.twitter.com"><span class="fab fa-twitter fa-2x"></span>Twitter</a></li>
+                    <li> <a href="https://www.instagram.com"><span class="fab fa-instagram fa-2x"></span>Instagram</a></li>
+                </div>
+                <div class="widgets">
+                    <h4>Recent comments</h4>
+                    <p><strong>Aazka</strong>This is awesome website</p>
+                    <p><strong>Amber</strong>very helpful tutorials</p>
+                </div>
             </div>
-            <span class=" navbar-text navbar-left d-inline websiteheader2 ">
-          <a class="websitename" href="Index.html" style="color: brown"> PakFlix </a>
-        </span>
-            <button class="navbar-toggler navbar-right navbarbutton" type="button" data-toggle="collapse" data-target="#collapse_target" >
-                <span class="sr-only">Togggle navigation</span>
-                <div  class="fa fa-align-justify fa-2x nav navbar-right navigationicon"></div>
-            </button>
-            <div class=" collapse navbar-collapse" id="collapse_target">
-                <ul class= "nav navbar-nav navbar-right navbarcolumn" >
-
-                    <li ><a href="index.php" class="fa fa-sign-in-alt" > Home</a></li>
-                    <li></i> <a href="about.php" class="fa fa-user"> About</a></li>
-                    <li><a href="contact.php" class="fa fa-envelope"> Contact</a></li>
-                    <li><a href="registration.php" class="fa fa-sign-in-alt" > Sign In</a></li>
-                    <li >
-                        <a href="login.php" class="fa fa-sign-in-alt" style="padding-right: 30px" > Login</a>
-                    </li>
-
-
-                </ul>
-            </div>
-
-        </nav>
-    </header>
+        </div>
+        <div class="main-footer">
+            <p>copyright &copy; 2018</p>
+        </div>
+    </div>
 </div>
