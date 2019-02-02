@@ -69,11 +69,11 @@ if(isset($_POST['Send']))
                     <h1 style="margin: 18px 0px;font-weight: bold; font-size: 52px;font-family: 'monospace';color: #545b62">Contact</h1>
                     <div class="form-group" style="margin: 0px 0px">
                         <label for="username" class="float-left" style=" font-weight: bold; font-size: 15px;font-family: 'monospace';color: #545b62">UserName</label>
-                        <input type="text" class="form-control" id="username" placeholder="UserName" required pattern="[a-zA-Z\-'\s]+" style=" font-weight: lighter; font-size: 15px;font-family: 'Hobo Std';color: black">
+                        <input type="text" class="form-control" id="username" placeholder="UserName" required pattern = "[A-Za-z](\d|\w|\.|-){2,30}" style=" font-weight: lighter; font-size: 15px;font-family: 'Hobo Std';color: black">
                     </div>
                     <div class="form-group" style="margin: 0px 0px">
                         <label for="exampleInputEmail1" class="float-left" style=" font-weight: bold; font-size: 15px;font-family: 'monospace';color: #545b62">Email </label>
-                        <input type="email" class="form-control" id="email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}"placeholder="Email" style=" font-weight: lighter; font-size: 15px;font-family: 'Hobo Std';color: black">
+                        <input type="email" class="form-control" id="email"required pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" placeholder="Email" style=" font-weight: lighter; font-size: 15px;font-family: 'Hobo Std';color: black">
                     </div>
                     <div class="form-group" style="margin: 0px 0px;padding-bottom: 14px">
                         <label for="exampleInputPassword1"  class="float-left" style=" font-weight: bold; font-size: 15px;font-family: 'monospace';color: #545b62">Message</label>

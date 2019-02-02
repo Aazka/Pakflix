@@ -142,6 +142,11 @@ if(isset($_POST['insert_Movie']))
                             <th><input type="checkbox" name="genre[]" value="romance">Romance</th>
                             <th><input type="checkbox" name="genre[]" value="fantacy">Fantacy</th>
                             <th><input type="checkbox" name="genre[]" value="crime">crime</th>
+
+                        </tr>
+                        <tr>
+                        <th><input type="checkbox" name="genre[]" value="Animated">Animated</th>
+                        <th><input type="checkbox" name="genre[]" value="adventure">Adventure</th>
                         </tr>
                     </table>
                 </div>

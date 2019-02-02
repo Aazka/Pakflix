@@ -1,10 +1,6 @@
-html, body
-{
-  /* padding:0;
-    margin:5px;
-    height:100%;
-    width:100%;*/
-}
+/*
+    Header
+ */
 #wrapper
 {
     min-width: 100%;
@@ -68,7 +64,9 @@ a:hover
     color: red;
     background: grey;
 }
-
+/*
+    Footer
+ */
 
 
 
@@ -76,7 +74,7 @@ a:hover
     clear:both;
     width:100%;
     min-height:300px;
-    background-image: linear-gradient(rgba(255,165,0,0.35),orange);
+    background-image: linear-gradient(rgba(255,165,0,0.35),#545b62);
 
 }
 .footer .widget-footer{
@@ -94,7 +92,7 @@ a:hover
 }
 .footer .widgets h4
 {
-    color:darkslategray;
+    color:#545b62;
     border-bottom: 1px solid rgba(0 128,0,0.23);
     font-size: 13px;
 }
@@ -112,9 +110,9 @@ a:hover
     height:25px;
 }
 .footer .subscribe-btn {
-    border: 1px solid #d8ffe2;
-    background-image: linear-gradient(#4db345, #aef382);
-    color: #338c08;
+    border: 1px solid #545b62;
+    background-image: linear-gradient(#545b62, #545b62);
+    color: #545b62;
     font-size: 13px;
     padding: 3px 10px;
     border-radius: 100px;
@@ -123,7 +121,7 @@ a:hover
 .subscribe-btn:hover
 {
     cursor: pointer;
-    background-image: linear-gradient(#34ce57,#baefab);
+    background-image: linear-gradient(#491217,#491217);
 }
 .footer .widgets img
 {
@@ -362,6 +360,10 @@ a:hover
     margin-top:20%;
     margin-bottom: 75%;
 }
+
+/*
+   SIGN IN
+ */
 .signin {
     text-align: center;
     padding-right: 0px;
@@ -378,11 +380,13 @@ a:hover
     border: 2px solid #545b62;
     -webkit-box-shadow: 17px 18px 20px 3px rgba(0,0,0,0.75);
     -moz-box-shadow: 17px 18px 20px 3px rgba(0,0,0,0.75);
-    box-shadow: 17px 18px 20px 3px saddlebrown;
+    box-shadow: 17px 18px 20px 3px #545b62;
     margin-top:20%;
     margin-bottom: 75%;
 }
-
+/*
+   FORGET
+ */
 
 .forgot {
     text-align: center;
@@ -397,10 +401,10 @@ a:hover
     height: 410px;
     padding-left: 15px;
     padding-right: 15px;
-    border: 2px solid saddlebrown;
+    border: 2px solid #545b62;
     -webkit-box-shadow: 17px 18px 20px 3px rgba(0,0,0,0.75);
     -moz-box-shadow: 17px 18px 20px 3px rgba(0,0,0,0.75);
-    box-shadow: 17px 18px 20px 3px saddlebrown;
+    box-shadow: 17px 18px 20px 3px #545b62;
     margin-top:50%;
     margin-bottom: 75%;
 }

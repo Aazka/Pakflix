@@ -1,20 +1,13 @@
 <?php require "Header.php";
 require "Admin/db_connection.php";
-//log_in
+
 session_start();
 $error_msg='';
 if(isset($_POST['log_in']))
 {
     $email=$_POST['login_exampleInputEmail1'];
     $password=$_POST['login_exampleInputPassword1'];
-   /* $reg_email='/[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}/';
-    $reg_pass='((\d|\w)+){5,}';//(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}';
-    if(!(preg_match($reg_email, $email) AND preg_match($reg_pass, $password)))
-    {
-        echo "plz follow the format";
-    }*/
-   /* else {*/
-        $login_user = "select * from users_info where email='$email' AND password='$password'";
+    $login_user = "select * from user_info where email='$email' AND password='$password'";
         $run_user = mysqli_query($con, $login_user);
         $check_user = mysqli_num_rows($run_user);
         if ($check_user == 0) {
@@ -23,7 +16,7 @@ if(isset($_POST['log_in']))
             $_SESSION['useremail']=$email;
             setcookie('useremail', $email, time() + (10 * 365 * 24 * 60 * 60));
             setcookie('userpassword', $password, time() + (10 * 365 * 24 * 60 * 60));
-            header('location:index.php?logged_in=You have successfully logged in!');
+            header('location:index.php');
         }
 
 }

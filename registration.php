@@ -1,33 +1,17 @@
 <?php
-
 require "Header.php";
 require "Admin/db_connection.php";
-require "Admin/function.php";
-
-
 
 session_start();
-
-// initializing variables
-$first_name = "";
-$last_name = "";
-$email    = "";
-$pass1 = "";
-$pass2 = "";
-//$gender= "";
-$errors = array();
-
-// connect to the database
-
-// REGISTER USER
 if (isset($_POST['sign_up'])) {
-    // receive all input values from the form
+
     $first_name = $_POST['first_name'];
     $last_name = $_POST['last_name'];
     $email = $_POST['email'];
     $pass1 = $_POST['pass'];
     $pass2 = $_POST['cpass'];
     $s = NULL;
+
     if(!empty($_POST['st']))
     {
         foreach($_POST['st'] as $value)
@@ -42,13 +26,13 @@ if (isset($_POST['sign_up'])) {
         }
     }
 
-        $query = "INSERT INTO users_info (first_name, last_name, email, password, gender) 
-  			  VALUES('$first_name', '$last_name', '$email', '$pass1,', '$s')";
+        $query = "INSERT INTO user_info (first_name, last_name, email, password, gender) 
+  			  VALUES('$first_name', '$last_name', '$email', '$pass1', '$s')";
         mysqli_query($con, $query);
         $_SESSION['useremail'] = $email;
-        setcookie('useremail', $email, time() + (10 * 365 * 24 * 60 * 60));
-        setcookie('userpassword', $pass1, time() + (10 * 365 * 24 * 60 * 60));
-        header('location: index.php');
+    setcookie('useremail', $email, time() + (10 * 365 * 24 * 60 * 60));
+    setcookie('userpassword', $pass1, time() + (10 * 365 * 24 * 60 * 60));
+    header('location: index.php');
 }
 ?>
 <!DOCTYPE html>
@@ -78,7 +62,7 @@ if (isset($_POST['sign_up'])) {
                         document.getElementById("hint").innerHTML = this.responseText;
                     }
                 };
-                check.open("POST", "CheckEmail.php?e=" + str, true);
+                check.open("POST", "Admin/CheckEmail.php?e=" + str, true);
                 check.send();
             }
         }
@@ -93,7 +77,7 @@ if (isset($_POST['sign_up'])) {
 
         <div class="row signin">
             <div class="col-md-4 offset-md-4 col-sm-6 offset-sm-3 col-xs-12">
-                <form class="form-containers bg-white" action="registration.php" method="post" enctype="multipart/form-data">
+                <form class="form-containers bg-white" method="post" enctype="multipart/form-data">
                     <h1 style="margin: 18px 0px;font-weight: bold; font-size: 65px;font-family: 'sans-serif';color: #545b62">SignIn</h1>
                     <div class="form-group" style="margin: 0px 0px">
                         <label for="signin_username" class="float-left" style=" font-weight: bold; font-size: 15px;font-family: 'sans-serif';color: #545b62">First Name</label>
@@ -106,7 +90,6 @@ if (isset($_POST['sign_up'])) {
                     <div class="form-group" style="margin: 0px 0px">
                         <label for="exampleInputEmail1" class="float-left" style=" font-weight: bold; font-size: 15px;font-family: 'sans-serif';color: #545b62">Email </label>
                         <input type="email" class="form-control" name="email" id="email" required pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" placeholder="Email" onkeyup="checkEmail(this.value)" style=" font-weight: lighter; font-size: 15px;font-family: 'sans-serif';color: #545b62";/>
-                        <span id="hint"></span>
                     </div>
                     <div class="form-group" style="margin: 0px 0px">
                         <label for="exampleInputPassword1"  class="float-left" style=" font-weight: bold; font-size: 15px;font-family: 'sans-serif';color: #545b62">Password</label>
@@ -119,12 +102,15 @@ if (isset($_POST['sign_up'])) {
                     </div>
                     <div class="form-group" style="margin: 0px 0px">
                         <label class="float-left" style=" font-weight: bold; font-size: 15px;font-family: 'Hobo Std';color: #545b62">Choose Gender</label>
-                        <input type='checkbox' name='st[]' value='Male'>Male
-                        <input type='checkbox' name='st[]' value='Female'>Female
+                        <tr>
+                            <th><input type="checkbox" name="st[]" value="Male">Male</th>
+                        </tr>
+                        <tr>
+                            <th><input type="checkbox" name="st[]" value="Female">Female</th>
+                        </tr>
                     </div>
-
                     <div class="input-group">
-                    <button type="submit" class="btn btn-warning btn-block" name="sign_up" id="sign_up" style=" font-weight: bold; font-size: 15px;font-family: 'sans-serif';color: #545b62"><a <!--href = "index.php"--> Sign In</a></button>
+                        <button type="submit" class="btn btn-warning btn-block" name="sign_up" id="sign_up" style=" font-weight: bold; font-size: 15px;font-family: 'sans-serif';color: #545b62"> Sign In</button>
                     </div>
                     <p>
                         Already have an account? <a href="login.php">Log In</a>
@@ -142,3 +128,4 @@ if (isset($_POST['sign_up'])) {
 
 
 
+-
